@@ -14,7 +14,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        
+
         SVProgressHUD.show()
         
         Service.medicaPage(0, withBlock: { (obj, error) -> Void in

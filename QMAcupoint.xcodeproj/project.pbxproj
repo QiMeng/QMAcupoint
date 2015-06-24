@@ -31,6 +31,7 @@
 /* Begin PBXFileReference section */
 		1D2D45290A1EE406D1484498 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		2038A04006D5CF3E9E8E5B1E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C08C51B1B3B671900130A8A /* com.qmj.QMAcupoint.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = com.qmj.QMAcupoint.db; sourceTree = "<group>"; };
 		EF1644B1AD7B3762E57F9CAB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		FFE1B0B91B3A8943003F02E8 /* QMAcupoint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QMAcupoint.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFE1B0BD1B3A8943003F02E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -147,6 +148,7 @@
 		FFE1B0DE1B3A9253003F02E8 /* OCHelp */ = {
 			isa = PBXGroup;
 			children = (
+				6C08C51B1B3B671900130A8A /* com.qmj.QMAcupoint.db */,
 				FFE1B0E01B3A926A003F02E8 /* Service.h */,
 				FFE1B0E11B3A926A003F02E8 /* Service.m */,
 				FFE1B0E31B3A9E00003F02E8 /* Model.h */,

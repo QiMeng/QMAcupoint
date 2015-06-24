@@ -24,11 +24,14 @@
 }
 + (NSString *)FMDBPath {
     
+//    return  [[NSBundle mainBundle] pathForResource:@"com.qmj.QMAcupoint" ofType:@"db"];
+    
     NSString* docsdir = [NSSearchPathForDirectoriesInDomains( NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
     NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
     NSString *app_Identifer = [infoDictionary objectForKey:@"CFBundleIdentifier"];
     
     NSLog(@"%@",docsdir);
+    
     return [NSString stringWithFormat:@"%@/%@.db",docsdir,app_Identifer];
     
     
@@ -38,8 +41,8 @@
     FMDatabase *_db = [FMDatabase databaseWithPath:[Service FMDBPath]];
     if ([_db open]) {
         
-        [_db executeUpdate:@"CREATE TABLE IF NOT EXISTS xuewei (href text PRIMARY KEY,title text,parent text)"];
-        [_db executeUpdate:@"CREATE TABLE IF NOT EXISTS info (href text PRIMARY KEY,jpg text,gif text,info text,title text,parent text , lid integer)"];
+        [_db executeUpdate:@"CREATE TABLE IF NOT EXISTS xuewei (href text PRIMARY KEY,title text,parent text, lid integer)"];
+        [_db executeUpdate:@"CREATE TABLE IF NOT EXISTS info (href text PRIMARY KEY,jpg text,gif text,info text,title text,parent text )"];
     }
     
     return _db;
@@ -121,9 +124,10 @@
     
     [db beginTransaction];
     
+    int i = 1;
     for (Model * m in aArray) {
         
-        [db executeUpdate:@"REPLACE INTO xuewei (href,title,parent) VALUES (?,?,?)",m.href,m.title,m.parent];
+        [db executeUpdate:@"REPLACE INTO xuewei (href,title,parent,lid) VALUES (?,?,?,?)",m.href,m.title,m.parent,[NSNumber numberWithInt:i++]];
     }
     [db commit];
     [db close];
@@ -159,7 +163,7 @@
         
         [Service info:m withBlock:^(Model * infoModel, NSError *error) {
 
-            [db executeUpdate:@"REPLACE INTO info (href, info,jpg,gif,title,parent,lid) VALUES (?,?,?,?,?,?,?)",infoModel.href,infoModel.info,infoModel.jpg,infoModel.gif,infoModel.title,infoModel.parent,[NSNumber numberWithInt:j]];
+            [db executeUpdate:@"REPLACE INTO info (href, info,jpg,gif,title,parent) VALUES (?,?,?,?,?,?)",infoModel.href,infoModel.info,infoModel.jpg,infoModel.gif,infoModel.title,infoModel.parent];
             
             [SVProgressHUD showProgress:j/(1.0 * array.count)];
             
@@ -233,25 +237,115 @@
     return aModel;
 }
 
+#pragma mark - 获取分组
 + (NSArray *)readGroup {
     
     NSMutableArray * array = [NSMutableArray array];
     
-    FMDatabase * db = [Service db];
-    
-    FMResultSet *rs = [db executeQuery:@"select parent,count(*) as count from info group by parent order by lid"];
-    
-    while ([rs next]) {
+    @autoreleasepool {
+        FMDatabase * db = [Service db];
         
-        Model * m = [Model new];
-        m.parent = [rs stringForColumn:@"parent"];
-        m.count = [rs intForColumn:@"count"];
-        [array addObject:m];
+        FMResultSet *rs = [db executeQuery:@"select parent,count(*) as count from xuewei group by parent order by lid"];
+        
+        while ([rs next]) {
+            
+            Model * m = [Model new];
+            m.parent = [rs stringForColumn:@"parent"];
+            m.count = [rs intForColumn:@"count"];
+            [array addObject:m];
+        }
     }
-    
+
     return array;
+}
++ (NSArray *)readPointFromGroup:(Model *)aModel {
+    
+    NSMutableArray * array = [NSMutableArray array];
+    
+    @autoreleasepool {
+        FMDatabase * db = [Service db];
+        
+        FMResultSet *rs = [db executeQuery:[NSString stringWithFormat:@"select * from xuewei where parent = '%@' order by lid",aModel.parent]];
+        
+        while ([rs next]) {
+            
+            Model * m = [Model new];
+            m.parent = [rs stringForColumn:@"parent"];
+            m.title = [rs stringForColumn:@"title"];
+            m.href = [rs stringForColumn:@"href"];
+            
+            [array addObject:m];
+            
+        }
+    }
+    return array;
+    
 }
 
 
+#pragma mark - 获取所有穴位 字典
++ (NSDictionary *)readAllPointDic {
+    
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    
+    @autoreleasepool {
+        FMDatabase * db = [Service db];
+        
+        FMResultSet *rs = [db executeQuery:@"select * from xuewei order by lid"];
+        
+        while ([rs next]) {
+            
+            Model * m = [Model new];
+            m.parent = [rs stringForColumn:@"parent"];
+            m.title = [rs stringForColumn:@"title"];
+            m.href = [rs stringForColumn:@"href"];
+            
+            [dic setObject:m forKey:m.href];
+            
+        }
+    }
+    return dic;
+}
+#pragma mark - 获取所有穴位 数组
++ (NSArray *)readAllPointArray {
+    
+    NSMutableArray * array = [NSMutableArray array];
+    
+    @autoreleasepool {
+        FMDatabase * db = [Service db];
+        
+        FMResultSet *rs = [db executeQuery:@"select * from xuewei order by lid"];
+        
+        while ([rs next]) {
+            
+            Model * m = [Model new];
+            m.parent = [rs stringForColumn:@"parent"];
+            m.title = [rs stringForColumn:@"title"];
+            m.href = [rs stringForColumn:@"href"];
+            
+            [array addObject:m];
+            
+        }
+    }
+    return array;
+}
+#pragma mark - 获取详细信息
++ (id) readInfoPointModel:(Model *)aModel {
+    
+    FMDatabase * db = [Service db];
+    
+    FMResultSet *rs = [db executeQuery:[NSString stringWithFormat:@"select * from info where href = '%@'",aModel.href]];
+    
+    Model * m = [Model new];
+    while ([rs next]) {
+        m.parent = [rs stringForColumn:@"parent"];
+        m.title = [rs stringForColumn:@"title"];
+        m.href = [rs stringForColumn:@"href"];
+        m.jpg = [rs stringForColumn:@"jpg"];
+        m.gif = [rs stringForColumn:@"gif"];
+        m.info = [rs stringForColumn:@"info"];
+    }
+    return m;
+}
 
 @end

@@ -19,4 +19,11 @@
 
 + (void)info;
 
+
++ (NSArray *)readGroup;
++ (NSArray *)readPointFromGroup:(Model *)aModel;
++ (NSDictionary *)readAllPointDic;
++ (NSArray *)readAllPointArray;
++ (id) readInfoPointModel:(Model *)aModel;
+
 @end
