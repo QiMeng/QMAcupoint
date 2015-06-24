@@ -168,14 +168,12 @@
             
             if (j == array.count) {
                 [SVProgressHUD showSuccessWithStatus:@"完成"];
+                [db close];
             }
 
         }];
         
     }
-    
-    
-    
 }
 
 + (id)info:(Model *)aModel withBlock:(void (^)(id infoModel, NSError *error))block {
@@ -204,15 +202,11 @@
             
             NSArray * trArray = [doc nodesForXPath:@"//div[@class='cdiv']" error:NULL];
             
-            //            for (GDataXMLElement * item0 in trArray) {
-            
             NSString * infostr = @"";
             
             NSArray * tr = [trArray[0] elementsForName:@"p"];
             
             for (GDataXMLElement * item1 in tr) {
-                
-                NSLog(@"%@",item1.stringValue);
                 
                 infostr = [NSString stringWithFormat:@"%@\n%@",infostr,item1.stringValue];
 
@@ -225,14 +219,11 @@
             {
                 GDataXMLElement *firstName = (GDataXMLElement *) [imgs objectAtIndex:0];
                 aModel.jpg = [[firstName attributeForName:@"src"] stringValue];
-
             }
             
             {
                 GDataXMLElement *firstName = (GDataXMLElement *) [imgs objectAtIndex:0];
-                
                 aModel.gif = [[firstName attributeForName:@"src"] stringValue];
-
             }
             
             
