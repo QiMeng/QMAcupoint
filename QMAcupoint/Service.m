@@ -34,11 +34,12 @@
     
 }
 + (FMDatabase *)db {
+    
     FMDatabase *_db = [FMDatabase databaseWithPath:[Service FMDBPath]];
     if ([_db open]) {
         
         [_db executeUpdate:@"CREATE TABLE IF NOT EXISTS xuewei (href text PRIMARY KEY,title text,parent text)"];
-        [_db executeUpdate:@"CREATE TABLE IF NOT EXISTS info (href text PRIMARY KEY,jpg text,gif text,info text,title text)"];
+        [_db executeUpdate:@"CREATE TABLE IF NOT EXISTS info (href text PRIMARY KEY,jpg text,gif text,info text,title text,parent text , lid integer)"];
     }
     
     return _db;
@@ -84,8 +85,6 @@
                     for (GDataXMLElement * item in groups) {
                         
                         GDataXMLElement *firstName = (GDataXMLElement *) [span objectAtIndex:i++];
-                        
-                        NSLog(@"------%@",firstName.stringValue);
                         
                         NSArray *groups = [item elementsForName:@"li"];
                         for (GDataXMLElement * aItem in groups) {
@@ -160,7 +159,7 @@
         
         [Service info:m withBlock:^(Model * infoModel, NSError *error) {
 
-            [db executeUpdate:@"REPLACE INTO info (href, info,jpg,gif,title) VALUES (?,?,?,?,?)",infoModel.href,infoModel.info,infoModel.jpg,infoModel.gif,infoModel.title];
+            [db executeUpdate:@"REPLACE INTO info (href, info,jpg,gif,title,parent,lid) VALUES (?,?,?,?,?,?,?)",infoModel.href,infoModel.info,infoModel.jpg,infoModel.gif,infoModel.title,infoModel.parent,[NSNumber numberWithInt:j]];
             
             [SVProgressHUD showProgress:j/(1.0 * array.count)];
             
@@ -233,5 +232,26 @@
     
     return aModel;
 }
+
++ (NSArray *)readGroup {
+    
+    NSMutableArray * array = [NSMutableArray array];
+    
+    FMDatabase * db = [Service db];
+    
+    FMResultSet *rs = [db executeQuery:@"select parent,count(*) as count from info group by parent order by lid"];
+    
+    while ([rs next]) {
+        
+        Model * m = [Model new];
+        m.parent = [rs stringForColumn:@"parent"];
+        m.count = [rs intForColumn:@"count"];
+        [array addObject:m];
+    }
+    
+    return array;
+}
+
+
 
 @end

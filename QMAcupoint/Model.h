@@ -18,5 +18,6 @@
 @property (nonatomic, copy) NSString * jpg;
 @property (nonatomic, copy) NSString * gif;
 
+@property (nonatomic, assign) int count;
 
 @end
