@@ -38,7 +38,7 @@
     if ([_db open]) {
         
         [_db executeUpdate:@"CREATE TABLE IF NOT EXISTS xuewei (href text PRIMARY KEY,title text,parent text)"];
-        [_db executeUpdate:@"CREATE TABLE IF NOT EXISTS info (href text PRIMARY KEY,jpg text,gif text,info text)"];
+        [_db executeUpdate:@"CREATE TABLE IF NOT EXISTS info (href text PRIMARY KEY,jpg text,gif text,info text,title text)"];
     }
     
     return _db;
@@ -160,7 +160,7 @@
         
         [Service info:m withBlock:^(Model * infoModel, NSError *error) {
 
-            [db executeUpdate:@"REPLACE INTO info (href, info,jpg,gif) VALUES (?,?,?,?)",infoModel.href,infoModel.info,infoModel.jpg,infoModel.gif];
+            [db executeUpdate:@"REPLACE INTO info (href, info,jpg,gif,title) VALUES (?,?,?,?,?)",infoModel.href,infoModel.info,infoModel.jpg,infoModel.gif,infoModel.title];
             
             [SVProgressHUD showProgress:j/(1.0 * array.count)];
             
