@@ -37,8 +37,8 @@
     FMDatabase *_db = [FMDatabase databaseWithPath:[Service FMDBPath]];
     if ([_db open]) {
         
-        [_db executeUpdate:@"CREATE TABLE xuewei (href text PRIMARY KEY,title text,parent text)"];
-        [_db executeUpdate:@"CREATE TABLE info (href text PRIMARY KEY,jpg text,gif text,info text)"];
+        [_db executeUpdate:@"CREATE TABLE IF NOT EXISTS xuewei (href text PRIMARY KEY,title text,parent text)"];
+        [_db executeUpdate:@"CREATE TABLE IF NOT EXISTS info (href text PRIMARY KEY,jpg text,gif text,info text)"];
     }
     
     return _db;
