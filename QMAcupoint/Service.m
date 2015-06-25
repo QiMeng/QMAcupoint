@@ -225,7 +225,7 @@
             }
             
             {
-                GDataXMLElement *firstName = (GDataXMLElement *) [imgs objectAtIndex:0];
+                GDataXMLElement *firstName = (GDataXMLElement *) [imgs objectAtIndex:1];
                 aModel.gif = [[firstName attributeForName:@"src"] stringValue];
             }
             

@@ -19,7 +19,7 @@ class MainViewController: UIViewController , UICollectionViewDataSource, UIColle
         super.viewDidLoad()
         
         group = Service.readGroup() as! Array<Model>
-
+        
     }
 
     func searchBarShouldBeginEditing(searchBar: UISearchBar) -> Bool {

@@ -293,15 +293,15 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rCa-Xf-Zi5">
-                                        <rect key="frame" x="8" y="37" width="584" height="297"/>
+                                        <rect key="frame" x="8" y="37" width="584" height="584"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="297" id="YmO-xS-fRr"/>
+                                            <constraint firstAttribute="height" constant="584" id="YmO-xS-fRr"/>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JhE-0l-z9C">
-                                        <rect key="frame" x="8" y="362" width="584" height="128"/>
+                                        <rect key="frame" x="8" y="649" width="584" height="584"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="128" id="IS6-K5-WVU"/>
+                                            <constraint firstAttribute="height" constant="584" id="IS6-K5-WVU"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
@@ -373,6 +373,7 @@
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </textAttributes>
                     </navigationBar>

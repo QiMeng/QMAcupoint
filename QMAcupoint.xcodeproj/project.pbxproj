@@ -109,6 +109,15 @@
 			path = resources;
 			sourceTree = "<group>";
 		};
+		FFD729191B3BFE5400883EA5 /* temp */ = {
+			isa = PBXGroup;
+			children = (
+				FFE1B0C01B3A8943003F02E8 /* ViewController.swift */,
+				FFD7290A1B3BA2D900883EA5 /* GroupCell.swift */,
+			);
+			name = temp;
+			sourceTree = "<group>";
+		};
 		FFE1B0B01B3A8943003F02E8 = {
 			isa = PBXGroup;
 			children = (
@@ -135,10 +144,9 @@
 				FFD7290C1B3BA42600883EA5 /* resources */,
 				FFE1B0DE1B3A9253003F02E8 /* OCHelp */,
 				FFE1B0BE1B3A8943003F02E8 /* AppDelegate.swift */,
-				FFE1B0C01B3A8943003F02E8 /* ViewController.swift */,
+				FFD729191B3BFE5400883EA5 /* temp */,
 				FFD729151B3BDC9300883EA5 /* MainViewController.swift */,
 				FFD729171B3BF17000883EA5 /* DetailsViewController.swift */,
-				FFD7290A1B3BA2D900883EA5 /* GroupCell.swift */,
 				FFE1B0C51B3A8943003F02E8 /* Images.xcassets */,
 				FFE1B0C21B3A8943003F02E8 /* Main.storyboard */,
 				FFE1B0C71B3A8943003F02E8 /* LaunchScreen.xib */,

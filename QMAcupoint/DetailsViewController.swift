@@ -29,9 +29,6 @@ class DetailsViewController: UIViewController {
         
         infoLabel.text = detail.info
         
-        
-
-        
         jpgimageView.sd_setImageWithURL(NSURL(string: detail.jpg))
         
         gifImageView.sd_setImageWithURL(NSURL(string: detail.gif))

@@ -29,9 +29,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         mainTable.tableFooterView = UIView()
         
         
-        group = Service.readGroup() as! Array<Model>
+//        group = Service.readGroup() as! Array<Model>
+//        
+//        mainTable.reloadData()
         
-        mainTable.reloadData()
+//        reloadData()
         
     }
     
