@@ -380,7 +380,7 @@
     }
     
     group.parent = [NSString stringWithFormat:@"'%@'的搜索",aSearch];
-    group.count = group.subArray.count;
+    group.count = (int)group.subArray.count;
     
     return array;
 }

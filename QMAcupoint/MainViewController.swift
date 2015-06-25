@@ -28,11 +28,11 @@ class MainViewController: UIViewController , UICollectionViewDataSource, UIColle
     }
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         
-        if !searchBar.text.isEmpty {
+//        if !searchBar.text.isEmpty {
             searchBar.text = ""
             group = Service.readGroup() as! Array<Model>
             mainCollection.reloadData()
-        }
+//        }
         
         mainSearch.setShowsCancelButton(false, animated: true)
         mainSearch.resignFirstResponder()
