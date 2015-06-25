@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		170170ACF3BB1405A2D12DAE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2038A04006D5CF3E9E8E5B1E /* libPods.a */; };
+		FFD7290B1B3BA2D900883EA5 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD7290A1B3BA2D900883EA5 /* GroupCell.swift */; };
+		FFD729101B3BA42600883EA5 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = FFD7290D1B3BA42600883EA5 /* arrow.png */; };
+		FFD729111B3BA42600883EA5 /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FFD7290E1B3BA42600883EA5 /* arrow@2x.png */; };
+		FFD729121B3BA42600883EA5 /* arrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FFD7290F1B3BA42600883EA5 /* arrow@3x.png */; };
+		FFD729141B3BAE3000883EA5 /* com.qmj.QMAcupoint.db in Resources */ = {isa = PBXBuildFile; fileRef = FFD729131B3BAE3000883EA5 /* com.qmj.QMAcupoint.db */; };
+		FFD729161B3BDC9300883EA5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD729151B3BDC9300883EA5 /* MainViewController.swift */; };
+		FFD729181B3BF17000883EA5 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD729171B3BF17000883EA5 /* DetailsViewController.swift */; };
 		FFE1B0BF1B3A8943003F02E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE1B0BE1B3A8943003F02E8 /* AppDelegate.swift */; };
 		FFE1B0C11B3A8943003F02E8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE1B0C01B3A8943003F02E8 /* ViewController.swift */; };
 		FFE1B0C41B3A8943003F02E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFE1B0C21B3A8943003F02E8 /* Main.storyboard */; };
@@ -31,8 +38,14 @@
 /* Begin PBXFileReference section */
 		1D2D45290A1EE406D1484498 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		2038A04006D5CF3E9E8E5B1E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		6C08C51B1B3B671900130A8A /* com.qmj.QMAcupoint.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = com.qmj.QMAcupoint.db; sourceTree = "<group>"; };
 		EF1644B1AD7B3762E57F9CAB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		FFD7290A1B3BA2D900883EA5 /* GroupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
+		FFD7290D1B3BA42600883EA5 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
+		FFD7290E1B3BA42600883EA5 /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@2x.png"; sourceTree = "<group>"; };
+		FFD7290F1B3BA42600883EA5 /* arrow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@3x.png"; sourceTree = "<group>"; };
+		FFD729131B3BAE3000883EA5 /* com.qmj.QMAcupoint.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = com.qmj.QMAcupoint.db; sourceTree = "<group>"; };
+		FFD729151B3BDC9300883EA5 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		FFD729171B3BF17000883EA5 /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		FFE1B0B91B3A8943003F02E8 /* QMAcupoint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QMAcupoint.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFE1B0BD1B3A8943003F02E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FFE1B0BE1B3A8943003F02E8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +99,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		FFD7290C1B3BA42600883EA5 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				FFD7290D1B3BA42600883EA5 /* arrow.png */,
+				FFD7290E1B3BA42600883EA5 /* arrow@2x.png */,
+				FFD7290F1B3BA42600883EA5 /* arrow@3x.png */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
 		FFE1B0B01B3A8943003F02E8 = {
 			isa = PBXGroup;
 			children = (
@@ -109,9 +132,13 @@
 		FFE1B0BB1B3A8943003F02E8 /* QMAcupoint */ = {
 			isa = PBXGroup;
 			children = (
+				FFD7290C1B3BA42600883EA5 /* resources */,
 				FFE1B0DE1B3A9253003F02E8 /* OCHelp */,
 				FFE1B0BE1B3A8943003F02E8 /* AppDelegate.swift */,
 				FFE1B0C01B3A8943003F02E8 /* ViewController.swift */,
+				FFD729151B3BDC9300883EA5 /* MainViewController.swift */,
+				FFD729171B3BF17000883EA5 /* DetailsViewController.swift */,
+				FFD7290A1B3BA2D900883EA5 /* GroupCell.swift */,
 				FFE1B0C51B3A8943003F02E8 /* Images.xcassets */,
 				FFE1B0C21B3A8943003F02E8 /* Main.storyboard */,
 				FFE1B0C71B3A8943003F02E8 /* LaunchScreen.xib */,
@@ -148,7 +175,7 @@
 		FFE1B0DE1B3A9253003F02E8 /* OCHelp */ = {
 			isa = PBXGroup;
 			children = (
-				6C08C51B1B3B671900130A8A /* com.qmj.QMAcupoint.db */,
+				FFD729131B3BAE3000883EA5 /* com.qmj.QMAcupoint.db */,
 				FFE1B0E01B3A926A003F02E8 /* Service.h */,
 				FFE1B0E11B3A926A003F02E8 /* Service.m */,
 				FFE1B0E31B3A9E00003F02E8 /* Model.h */,
@@ -242,7 +269,11 @@
 			files = (
 				FFE1B0C41B3A8943003F02E8 /* Main.storyboard in Resources */,
 				FFE1B0C91B3A8943003F02E8 /* LaunchScreen.xib in Resources */,
+				FFD729111B3BA42600883EA5 /* arrow@2x.png in Resources */,
+				FFD729121B3BA42600883EA5 /* arrow@3x.png in Resources */,
 				FFE1B0C61B3A8943003F02E8 /* Images.xcassets in Resources */,
+				FFD729141B3BAE3000883EA5 /* com.qmj.QMAcupoint.db in Resources */,
+				FFD729101B3BA42600883EA5 /* arrow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,8 +324,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFD7290B1B3BA2D900883EA5 /* GroupCell.swift in Sources */,
 				FFE1B0C11B3A8943003F02E8 /* ViewController.swift in Sources */,
 				FFE1B0BF1B3A8943003F02E8 /* AppDelegate.swift in Sources */,
+				FFD729161B3BDC9300883EA5 /* MainViewController.swift in Sources */,
+				FFD729181B3BF17000883EA5 /* DetailsViewController.swift in Sources */,
 				FFE1B0E21B3A926A003F02E8 /* Service.m in Sources */,
 				FFE1B0E51B3A9E00003F02E8 /* Model.m in Sources */,
 			);
@@ -426,8 +460,10 @@
 			baseConfigurationReference = 1D2D45290A1EE406D1484498 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = QMAcupoint/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "QMAcupoint/QMAcupoint-Bridging-Header.h";
@@ -440,8 +476,10 @@
 			baseConfigurationReference = EF1644B1AD7B3762E57F9CAB /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = QMAcupoint/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "QMAcupoint/QMAcupoint-Bridging-Header.h";

@@ -24,15 +24,15 @@
 }
 + (NSString *)FMDBPath {
     
-//    return  [[NSBundle mainBundle] pathForResource:@"com.qmj.QMAcupoint" ofType:@"db"];
+    return  [[NSBundle mainBundle] pathForResource:@"com.qmj.QMAcupoint" ofType:@"db"];
     
-    NSString* docsdir = [NSSearchPathForDirectoriesInDomains( NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
-    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-    NSString *app_Identifer = [infoDictionary objectForKey:@"CFBundleIdentifier"];
-    
-    NSLog(@"%@",docsdir);
-    
-    return [NSString stringWithFormat:@"%@/%@.db",docsdir,app_Identifer];
+//    NSString* docsdir = [NSSearchPathForDirectoriesInDomains( NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+//    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+//    NSString *app_Identifer = [infoDictionary objectForKey:@"CFBundleIdentifier"];
+//    
+//    NSLog(@"%@",docsdir);
+//    
+//    return [NSString stringWithFormat:@"%@/%@.db",docsdir,app_Identifer];
     
     
 }
@@ -165,12 +165,12 @@
 
             [db executeUpdate:@"REPLACE INTO info (href, info,jpg,gif,title,parent) VALUES (?,?,?,?,?,?)",infoModel.href,infoModel.info,infoModel.jpg,infoModel.gif,infoModel.title,infoModel.parent];
             
-            [SVProgressHUD showProgress:j/(1.0 * array.count)];
+            [SVProgressHUD showProgress:j/(1.0 * array.count) maskType:SVProgressHUDMaskTypeBlack];
             
             j++;
             
             if (j == array.count) {
-                [SVProgressHUD showSuccessWithStatus:@"完成"];
+                [SVProgressHUD showSuccessWithStatus:@"完成" maskType:SVProgressHUDMaskTypeBlack];
                 [db close];
             }
 
@@ -252,13 +252,17 @@
             Model * m = [Model new];
             m.parent = [rs stringForColumn:@"parent"];
             m.count = [rs intForColumn:@"count"];
+            
+            m.subArray = [self readPointsFromGroup:m];
+            
             [array addObject:m];
+            
         }
     }
 
     return array;
 }
-+ (NSArray *)readPointFromGroup:(Model *)aModel {
++ (NSArray *)readPointsFromGroup:(Model *)aModel {
     
     NSMutableArray * array = [NSMutableArray array];
     
@@ -347,5 +351,39 @@
     }
     return m;
 }
+
++ (NSArray *)search:(NSString *)aSearch {
+    
+    NSMutableArray * array = [NSMutableArray array];
+    
+    Model * group = [Model new];
+    [array addObject:group];
+    
+
+    @autoreleasepool {
+        FMDatabase * db = [Service db];
+        
+        FMResultSet *rs = [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM xuewei WHERE title LIKE  '%%%@%%'",aSearch]];
+        
+        NSMutableArray * subs = [NSMutableArray array];
+        while ([rs next]) {
+            
+            Model * m = [Model new];
+            m.parent = [rs stringForColumn:@"parent"];
+            m.title = [rs stringForColumn:@"title"];
+            m.href = [rs stringForColumn:@"href"];
+            
+            [subs addObject:m];
+        }
+        
+        group.subArray = subs;
+    }
+    
+    group.parent = [NSString stringWithFormat:@"'%@'的搜索",aSearch];
+    group.count = group.subArray.count;
+    
+    return array;
+}
+
 
 @end

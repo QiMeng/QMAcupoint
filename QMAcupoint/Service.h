@@ -21,9 +21,11 @@
 
 
 + (NSArray *)readGroup;
-+ (NSArray *)readPointFromGroup:(Model *)aModel;
++ (NSArray *)readPointsFromGroup:(Model *)aModel;
 + (NSDictionary *)readAllPointDic;
 + (NSArray *)readAllPointArray;
 + (id) readInfoPointModel:(Model *)aModel;
+
++ (NSArray *)search:(NSString *)aSearch;
 
 @end
