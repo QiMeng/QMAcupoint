@@ -7,7 +7,8 @@
 #import <MobClick.h>
 #import <UMSocial.h>
 #import <AFNetworking.h>
-#import <UIImageView+WebCache.h>
+
+#import <UIImageView+ProgressView.h>
 #import <FMDB.h>
 
 #import "Service.h"
